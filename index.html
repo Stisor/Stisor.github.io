@@ -6,12 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
-    <favicon href="img/windows-logo.png" type="image/x-icon">
-        <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="img/windows-logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 
 <body id="close-btn">
+
     <div class="grid-container">
         <div class="desktop">
             <div class="background-img"></div>
@@ -38,11 +39,12 @@
                 <div class="edge">
                     <img src="img/edge.png" alt="edge">
                 </div>
-                <div class="github"> 
+                <div class="github">
                     <img src="img/github-desktop.png" alt="github">
                 </div>
-                
-                <div class="settings">
+
+                <div class="settings" id="settings">
+                    <button type="submit" onclick="openApp()" class="settings-btn" id="settings-btn"></button>
                     <img src="img/settings.png" alt="settings">
                 </div>
                 <div class="store">
@@ -63,8 +65,31 @@
             <div class="quick-searches"> Quick searches</div>
             <div class="top-apps"> Top apps</div>
         </div>
-
     </div>
+
+    <div class="desktop-apps" id="desktop-apps">
+        <div class="github-app">
+            <div class="app-header" id="draggable">
+
+            </div>
+        </div>
+        <div class="file-explorer-app">
+            <div class="app-header" id="draggable">
+
+            </div>
+        </div>
+        <div class="settings-app" id="settings-app">
+            <div class="app-header" id="draggable">
+                <button type="submit" onclick="closeApp()" class="close-btn" id="close-btn">&#xd7;</button>
+            </div>
+        </div>
+        <div class="store-app">
+            <div class="app-header" id="draggable">
+
+            </div>
+        </div>
+    </div>
+
 </body>
 
 <footer>
