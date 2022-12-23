@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
-    <script type="javascript" src="script.js"></script>
     <favicon href="img/windows-logo.png" type="image/x-icon">
+        <link rel="stylesheet" href="style.css">
 </head>
-<link rel="stylesheet" href="style.css">
 
-<body>
+
+<body id="close-btn">
     <div class="grid-container">
         <div class="desktop">
             <div class="background-img"></div>
@@ -22,13 +22,14 @@
                     <img src="img/windows-logo.png" alt="windows-logo">
                 </div>
                 <div class="search">
-                    <button class="search-btn" id="search-btn">
+                    <button type="submit" onclick="search_btn()" class="search-btn" id="search-btn"
+                        style="background-color: white; color: black;">
                         <img src="img/search.png" class="search-icon">
                         Search
                     </button>
                     <!-- Changes the button color to blue-->
                     <script>
-                       
+
                     </script>
                 </div>
                 <div class="file-explorer">
@@ -37,12 +38,17 @@
                 <div class="edge">
                     <img src="img/edge.png" alt="edge">
                 </div>
+                <div class="github"> 
+                    <img src="img/github-desktop.png" alt="github">
+                </div>
+                
                 <div class="settings">
                     <img src="img/settings.png" alt="settings">
                 </div>
                 <div class="store">
                     <img src="img/store.png" alt="store">
                 </div>
+
             </div>
             <div class="info">
                 <div class="time"></div>
@@ -50,9 +56,19 @@
         </div>
     </div>
 
-    <div class="modall">
-        <p>TestTestTestTestTestTestTestTestTestTestTestTestTestTest</p>
+    <div class="modal" id="search-modal">
+        <div class="modal-content">
+            <div class="search-bar"> Search bar</div>
+            <div class="recent"> Recent </div>
+            <div class="quick-searches"> Quick searches</div>
+            <div class="top-apps"> Top apps</div>
+        </div>
+
     </div>
 </body>
+
+<footer>
+    <script src="script.js"></script>
+</footer>
 
 </html>

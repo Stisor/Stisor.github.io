@@ -1,5 +1,4 @@
 .taskbar {
-
     position: fixed;
     bottom: 0;
     left: 0;
@@ -11,12 +10,13 @@
     z-index: 9999;
     background-color: rgba(255, 255, 255, 0.69);
     backdrop-filter: blur(20px);
-    
+
 }
+
 .icons {
     display: grid;
-    grid-template-columns: 50px 100px 50px 50px 50px 50px;
-    column-gap: 10px;
+    grid-template-columns: 50px 100px 50px 50px 50px 50px 50px;
+    column-gap: 0px;
     position: absolute;
     top: 0;
     left: 0;
@@ -38,32 +38,36 @@
     line-height: 50px;
 }
 
-.start:hover , .file-explorer:hover {
+.start:hover, .file-explorer:hover, .edge:hover, .settings:hover, .store:hover, .github:hover {
     background-color: rgb(255, 255, 255, 0.6);
     border-radius: 10%;
 }
 
-.search-btn{
+.search-btn {
     height: 30px;
-    width: 90px;
+    width: 100px;
     cursor: pointer;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(218, 218, 218);
     z-index: 10001;
     transition: background-color .2s;
-    border-top-left-radius:28px;
-    border-top-right-radius:28px;
-    border-bottom-left-radius:28px;
-    border-bottom-right-radius:28px;
+    border-top-left-radius: 28px;
+    border-top-right-radius: 28px;
+    border-bottom-left-radius: 28px;
+    border-bottom-right-radius: 28px;
     margin-bottom: 15px;
-    border: none;
+    border: solid;
+    border-width: 1px;
+    border-color: rgb(218, 218, 218);
+
     outline: none;
 }
 
 .search-btn:hover {
-    background-color: rgba(246, 246, 246, 1);
+    background-color: rgb(196, 196, 196);
 }
-.search-icon{
-    position: relative; 
+
+.search-icon {
+    position: relative;
     top: 0px;
     left: 0px;
     width: 10px;
@@ -74,10 +78,9 @@
 }
 
 
-.file-explorer {
+.file-explorer, .edge , .settings, .store, .github {
     height: 40px;
     width: 40px;
-    margin-left: -10%;
     margin-top: 5px;
     cursor: pointer;
     z-index: 10001;
@@ -85,6 +88,7 @@
     border-radius: 10%;
     line-height: 50px;
 }
+
 
 .desktop {
     position: fixed;
@@ -111,19 +115,63 @@
 
 }
 
-.modal{
-    position: fixed;
-    top: -100;
-    left: 50%;
-    width: 40%;
-    height: 40%;
-    z-index: 20000;
-    background-color: rgb(255, 255, 255);
+.modal {
+    position: absolute;
+    bottom: 60px;
+    left: 30%;
+    width: 800px;
+    height: 70%;
+    z-index: 9998;
+    background-color: rgba(236, 236, 236, 0.8);
+    backdrop-filter: blur(30px);
     display: block;
+    border-radius: 8px;
+    border: 1px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.2);
+    transform: translateY(1000px);
+}
+
+
+.modal-content {
+    display: grid;
+    grid-template-areas:
+        'search-bar search-bar search-bar search-bar search-bar search-bar search-bar'
+        'recent recent recent quick-searches  quick-searches quick-searches  squick-searches'
+        'recent recent recent top-apps top-apps top-apps top-apps '
+    ;
+    grid-auto-rows: 40px;
+    row-gap: 10px;
+    column-gap: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 98%;
+    height: 100%;
+    margin: 10px;
+}
+
+.search-bar {
+    background-color: aqua;
+    height: 8% ;
+    top: 20px;
+}
+
+.recent {
+    background-color: red;
+}
+
+.quick-searches {
+    background-color: green;
+}
+
+.top-apps {
+    background-color: blue;
 }
 
 body {
     margin: 0;
     padding: 0;
     z-index: 9995;
+    overflow: hidden;
 }
