@@ -29,74 +29,83 @@ function search_btn() {
   };
 }
 
-function openApp() {
-  console.log("open app");
-  // Open settings when the user clicks on the settings button
-  var settings = document.getElementById("settings");
-  var settings_app = document.getElementById("settings-app");
-  settings.onclick = function () {
-    console.log("settings clicked");
-    settings_app.style.display = "block";
-  };
+function openSettings() {
+  var settings = document.getElementById("settings-app");
+  if (settings.style.display === "block") {
+    settings.style.display = "none";
+  } else {
+    settings.style.display = "block";
+    console.log("settings opened");
+  }
+
 }
 
-function closeApp() {
-  console.log("close app");
-  // Close app when the user clicks on the close button
-  var close = document.getElementsByClassName("close-btn");
-  var settings_app = document.getElementById("settings-app");
-  var desktop = document.getElementById("desktop-apps");
-
-  close[0].onclick = function () {
-    console.log("close clicked");
-    settings_app.style.display = "none";
-    desktop.style.display="none"
-  };
+function closeSettings() {
+  var settings = document.getElementById("settings-app");
+  settings.style.display = "none";
 }
 
-// Make the DIV element draggable:
-dragElement(document.getElementById("desktop-apps"));
+function openGithub() {
+  var github = document.getElementById("github-app");
+  if (github.style.display === "block") {
+    github.style.display = "none";
+  } else {
+    github.style.display = "block";
+    console.log("github opened");
+  }
+
+}
+
+function closeGithub() {
+  var github = document.getElementById("github-app");
+  github.style.display = "none";
+}
+
+
+
+
+
+var draggableElements = document.getElementsByClassName("app-header");
+
+if (draggableElements.length > 0) {
+    // There are elements with the "draggable" class, so we can loop through them and make them draggable
+    for(var i = 0; i < draggableElements.length; i++){
+        dragElement(draggableElements[i]);
+    }
+} else {
+    // There are no elements with the "draggable" class, so we can't make any elements draggable
+    console.error("There are no elements with the 'app-header' class");
+}
 
 function dragElement(elmnt) {
-  var pos1 = 0,
-    pos2 = 0,
-    pos3 = 0,
-    pos4 = 0;
-  if (document.getElementById(elmnt.id + "header")) {
-    // if present, the header is where you move the DIV from:
-    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-  } else {
-    // otherwise, move the DIV from anywhere inside the DIV:
-    elmnt.onmousedown = dragMouseDown;
-  }
+    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    if (document.getElementById(elmnt.id + "header")) {
+        document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+    } else {
+        elmnt.onmousedown = dragMouseDown;
+    }
+    function dragMouseDown(e) {
+        e = e || window.event;
+        pos3 = parseInt(e.clientX, 10);
+        pos4 = parseInt(e.clientY, 10);
+        document.onmouseup = closeDragElement;
+        document.onmousemove = elementDrag;
+        return false;
+    }
 
-  function dragMouseDown(e) {
-    e = e || window.event;
-    e.preventDefault();
-    // get the mouse cursor position at startup:
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    document.onmouseup = closeDragElement;
-    // call a function whenever the cursor moves:
-    document.onmousemove = elementDrag;
-  }
+    function elementDrag(e) {
+        e = e || window.event;
+        pos1 = pos3 - parseInt(e.clientX, 10);
+        pos2 = pos4 - parseInt(e.clientY, 10);
+        pos3 = parseInt(e.clientX, 10);
+        pos4 = parseInt(e.clientY, 10);
+        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+        console.log(elmnt.offsetTop)
+        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    }
 
-  function elementDrag(e) {
-    e = e || window.event;
-    e.preventDefault();
-    // calculate the new cursor position:
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    // set the element's new position:
-    elmnt.style.top = elmnt.offsetTop - pos2 + "px";
-    elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
-  }
-
-  function closeDragElement() {
-    /* stop moving when mouse button is released:*/
-    document.onmouseup = null;
-    document.onmousemove = null;
-  }
+    function closeDragElement() {
+        document.onmouseup = null;
+        document.onmousemove = null;
+    }
 }
